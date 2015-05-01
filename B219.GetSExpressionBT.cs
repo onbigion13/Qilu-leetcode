@@ -59,6 +59,15 @@ Since D tries to attach itself as parent to a node already above it in the tree,
 Idea:
 Use a 26*26 graph to represent the input tree. Then check for each error in the order, finally use
 a recursive DFS to form the tree and the output SExpression.
+
+E1: More than 2 children. Check if graph[i][j], j from 0 to 25 has more than two cell that is true.
+E2: Duplicate Edge. Check when constructing the graph, if graph[x][y] is already true, E2=true.
+E3: Cycle Present: Check when looking for the root, starting from each root, use recursive DFS to check if there is
+a cycle in the graph.
+E4: Multiple roots: traverse all nodes in the HashSet, if no edge connected TO this node, then it must be a root.
+即这个顶点没有入度，没有其他的点指向这个点，那么这个点必然是root. If number of roots > 1, return "E4".
+Note: if number of roots == 0, then there must also be a cycle, return "E3".
+
 */
 
 using System;
